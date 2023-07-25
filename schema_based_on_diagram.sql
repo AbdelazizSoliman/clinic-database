@@ -4,14 +4,6 @@ CREATE TABLE patients (
   date_of_birth DATE NOT NULL
 );
 
-CREATE TABLE medical_histories (
-  id SERIAL PRIMARY KEY,
-  admitted_at TIMESTAMP,
-  patient_id INT NOT NULL,
-  status varchar(50),
-  CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patients (id)
-);
-
 CREATE TABLE invoices (
   id SERIAL PRIMARY KEY,
   total_amount DECIMAL(10,2),
@@ -44,6 +36,14 @@ CREATE TABLE medical_history_treatments (
   PRIMARY KEY (medical_history_id, treatment_id),
   CONSTRAINT fk_medical_history_id FOREIGN KEY (medical_history_id) REFERENCES medical_histories (id),
   CONSTRAINT fk_treatment_id FOREIGN KEY (treatment_id) REFERENCES treatments (id)
+);
+
+CREATE TABLE medical_histories (
+  id SERIAL PRIMARY KEY,
+  admitted_at TIMESTAMP,
+  patient_id INT NOT NULL,
+  status varchar(50),
+  CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patients (id)
 );
 
 -- Create indexes on foreign key columns
