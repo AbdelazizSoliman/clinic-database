@@ -1,6 +1,6 @@
 CREATE TABLE patients (
   id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
+  name varchar(50) NOT NULL,
   date_of_birth DATE NOT NULL
 );
 
@@ -8,7 +8,7 @@ CREATE TABLE medical_histories (
   id SERIAL PRIMARY KEY,
   admitted_at TIMESTAMP,
   patient_id INT NOT NULL,
-  status TEXT,
+  status varchar(50),
   CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patients (id)
 );
 
@@ -34,6 +34,6 @@ CREATE TABLE invoice_items (
 
 CREATE TABLE treatments (
   id SERIAL PRIMARY KEY,
-  type TEXT NOT NULL,
-  name TEXT NOT NULL
+  type varchar(50) NOT NULL,
+  name varchar(50) NOT NULL
 );
