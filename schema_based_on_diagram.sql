@@ -37,3 +37,10 @@ CREATE TABLE treatments (
   type varchar(50) NOT NULL,
   name varchar(50) NOT NULL
 );
+
+
+-- Create indexes on foreign key columns
+CREATE INDEX idx_invoice_items_invoice_id ON invoice_items (invoice_id);
+CREATE INDEX idx_invoice_items_treatment_id ON invoice_items (treatment_id);
+CREATE INDEX idx_invoices_medical_history_id ON invoices (medical_history_id);
+CREATE INDEX idx_medical_histories_patient_id ON medical_histories (patient_id);
